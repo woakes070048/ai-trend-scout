@@ -691,9 +691,15 @@ export default function Home() {
             </DialogHeader>
             <div className="mt-2">
               <div className="rounded-xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-950/30 dark:via-purple-950/30 dark:to-pink-950/30 p-6">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-[15px]">
-                  {summary}
-                </p>
+                <p
+                  className="text-gray-700 dark:text-gray-300 leading-relaxed text-[15px]"
+                  dangerouslySetInnerHTML={{
+                    __html: summary.replace(
+                      /\*\*(.+?)\*\*/g,
+                      "<strong>$1</strong>"
+                    ),
+                  }}
+                />
               </div>
               <p className="text-xs text-gray-400 dark:text-gray-500 mt-4 flex items-center gap-1">
                 <Sparkles className="h-3 w-3" />
